@@ -1,11 +1,10 @@
-﻿using Ecommerce.Domain.Entities;
+using Ecommerce.Domain.Entities;
 
-namespace Ecommerce.Application.Interfaces
+namespace Ecommerce.Application.Interfaces;
+
+public interface IProductRepository
 {
-    public interface IProductRepository
-    {
-        Task<Product> GetByIdAsync(Guid id);
-        Task<List<Product>> GetAllAsync();
-        Task AddAsync(Product product);
-    }
+    Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<IReadOnlyList<Product>> GetAllAsync(CancellationToken cancellationToken = default);
+    Task AddAsync(Product product, CancellationToken cancellationToken = default);
 }
